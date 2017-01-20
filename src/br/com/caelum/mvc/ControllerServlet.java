@@ -23,7 +23,7 @@ protected void service(HttpServletRequest request,HttpServletResponse response) 
 			String pagina = Logica.executa(request, response);
 			request.getRequestDispatcher(pagina).forward(request, response);
 		} catch (Exception e) {
-		throw new ServletException("A lógica de negócios causou uma exceção", e);
+		throw new ServletException("A lÃ³gica de negÃ³cios causou uma exceÃ§Ã£o", e);
 }
 }
 }

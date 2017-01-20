@@ -16,6 +16,10 @@
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
+  function executar(){
+	alert('executando');
+  }
+  
   </script>
   
 <body>
@@ -27,7 +31,7 @@ Nome: <input type="text" name="nome" value="${contato.nome}"  /><br />
 E-mail: <input type="text" name="email" value="${contato.email}" /><br />
 Endereço: <input type="text" name="endereco" value="${contato.endereco}" /><br />
 Data Nascimento: <caelum:campoData id="dataNascimento" value="${sData}" /> <br />
-<input type="submit" value="Gravar" onclick="alert('teste')"/>
+<input type="submit" value="Gravar" onclick="executar()"/>
 </form>
 <c:import url="rodape.jsp" />
 </body>
