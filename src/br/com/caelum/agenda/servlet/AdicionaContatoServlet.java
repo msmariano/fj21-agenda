@@ -33,8 +33,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String endereco = request.getParameter("endereco");
 		String email = request.getParameter("email");
-		String dataEmTexto = request
-		.getParameter("dataNascimento");
+		String dataEmTexto = request.getParameter("dataNascimento");
 		Calendar dataNascimento = null;
 		// fazendo a conversão da data
 		try {
