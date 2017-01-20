@@ -14,9 +14,9 @@ public class AlteraContatoLogica implements logica {
 		long id = Long.parseLong(req.getParameter("id"));
 		Contato contato = new Contato();
 		contato.setId(id);
-		req.setAttribute("contato", contato);
 		ContatoDao dao = new ContatoDao();
 		dao.seleciona(contato);
+		req.setAttribute("contato", contato);
 		System.out.println("Alterando contato... ");
 		return "/WEB-INF/jsp/adiciona-contato.jsp";
 		
