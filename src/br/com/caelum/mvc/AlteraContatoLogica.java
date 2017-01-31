@@ -25,6 +25,7 @@ public class AlteraContatoLogica implements logica {
 		sData = date.format(contato.getDataNascimento().getTime()).toString();
 		req.setAttribute("contato", contato);
 		req.setAttribute("sData", sData);
+		req.setAttribute("acao", "alterar");
 		System.out.println("Alterando contato... ");
 		return "/WEB-INF/jsp/adiciona-contato.jsp";
 		

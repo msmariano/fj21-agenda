@@ -5,6 +5,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="caelum" %>
 
 <html> 
+
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
@@ -16,8 +17,15 @@
   $( function() {
     $( "#datepicker" ).datepicker();
   } );
-  function executar(){
-	alert('executando');
+  function executar(acao){
+	alert(acao);
+	if (acao == 'alterar')
+	{
+		document.getElementById("cadastroUsuario").action = "alteraContato"
+		document.getElementById("cadastroUsuario").submit();	
+	}
+	else
+		document.getElementById("cadastroUsuario").submit();
   }
   
   </script>
@@ -26,12 +34,13 @@
 <c:import url="cabecalho.jsp" />
 <h1>Adiciona Contatos</h1>
 <hr />
-<form action="adicionaContato"   >
+<form id = "cadastroUsuario" action="adicionaContato"   >
+<input type="hidden" name = "idContato" value="${contato.id}" />
 Nome: <input type="text" name="nome" value="${contato.nome}"  /><br />
 E-mail: <input type="text" name="email" value="${contato.email}" /><br />
 Endereço: <input type="text" name="endereco" value="${contato.endereco}" /><br />
 Data Nascimento: <caelum:campoData id="dataNascimento" value="${sData}" /> <br />
-<input type="submit" value="Gravar" onclick="executar()"/>
+<input type="button" value="Gravar" onclick="executar('${acao}')"/>
 </form>
 <c:import url="rodape.jsp" />
 </body>

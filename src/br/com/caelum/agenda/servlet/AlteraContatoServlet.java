@@ -14,11 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import antlr.Parser;
 import br.com.caelum.jdbc.dao.ContatoDao;
 import br.com.caelum.modelo.Contato;
 
 @WebServlet("/adicionaContato")
-public class AdicionaContatoServlet extends HttpServlet {
+public class AlteraContatoServlet extends HttpServlet {
 	/**
 	 * 
 	 */
@@ -34,6 +35,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 		String endereco = request.getParameter("endereco");
 		String email = request.getParameter("email");
 		String dataEmTexto = request.getParameter("dataNascimento");
+		String idContato = request.getParameter("idContato");
 		Calendar dataNascimento = null;
 		// fazendo a convers�o da data
 		try {
@@ -50,9 +52,11 @@ public class AdicionaContatoServlet extends HttpServlet {
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
+		contato.setId(Long.parseLong(idContato));
+		
 		// salva o contato
 		ContatoDao dao = new ContatoDao();
-		dao.adiciona(contato);
+		dao.altera(contato);
 		// imprime o nome do contato que foi adicionado
 		/*out.println("<html>");
 		out.println("<body>");
@@ -61,7 +65,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 				" adicionado com sucesso");
 		out.println("</body>");
 		out.println("</html>");*/
-		RequestDispatcher rd = request.getRequestDispatcher("//fj21-agenda/mvc?logica=ListaContatosLogica");
+		RequestDispatcher rd = request.getRequestDispatcher("/mvc?logica=ListaContatosLogica");
 		rd.forward(request,response);
 		}
 	}

@@ -12,6 +12,7 @@ public class AdicionaContatosLogica implements logica {
 	public String executa(HttpServletRequest req, HttpServletResponse res)throws Exception {
 	//	List <Contato> contatos = new ContatoDao().getLista();
 	//	req.setAttribute("contatos", contatos);
+		req.setAttribute("acao", "adicionar");
 		return "/WEB-INF/jsp/adiciona-contato.jsp";
 	}
 }
