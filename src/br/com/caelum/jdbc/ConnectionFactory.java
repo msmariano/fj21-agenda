@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
+	private Connection conn = null;
 	public Connection getConnection() {
-		Connection conn = null;
+		
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			conn = DriverManager.getConnection(
@@ -16,6 +17,10 @@ public class ConnectionFactory {
 		throw new RuntimeException(e);
 		} 
 		return conn;
-		}
+	}
+	public void setConnection(Connection conn){
+		this.conn   = conn;
+		
+	}
 
 }

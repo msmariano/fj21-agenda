@@ -46,4 +46,14 @@
   <error-code>404</error-code>
   <location>/404.html</location>
  </error-page>
+ 
+ <filter>
+<filter-name>meuFiltro</filter-name>
+<filter-class>br.com.caelum.agenda.filtro.FiltroTempoDeExecucao</filter-class>
+</filter>
+<filter-mapping>
+<filter-name>meuFiltro</filter-name>
+<url-pattern>/*</url-pattern>
+</filter-mapping>
+
 </web-app>

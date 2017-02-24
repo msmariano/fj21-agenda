@@ -20,7 +20,10 @@ public class ContatoDao {
 	private Connection connection;
 	
 	public ContatoDao() {
-		this.connection = new ConnectionFactory().getConnection();
+		//this.connection = new ConnectionFactory().getConnection();
+	}
+	public void setConnection(Connection conn){
+		this.connection = conn;
 	}
 	public void adiciona(Contato contato) {
 		String sql = "insert into contatos " +
@@ -28,7 +31,7 @@ public class ContatoDao {
 		" values (?,?,?,?)";
 	    Date data = new Date(contato.getDataNascimento().getTimeInMillis());
 		try {
-		// prepared statement para inserção
+		// prepared statement para inserï¿½ï¿½o
 		java.sql.PreparedStatement stmt = connection.prepareStatement(sql);
 		
 		// seta os valores
@@ -56,11 +59,11 @@ public class ContatoDao {
 			  contato.setNome(rs.getString("nome"));
 			  contato.setEmail(rs.getString("email"));
 			  contato.setEndereco(rs.getString("endereco"));
-	          // montando a data através do Calendar
+	          // montando a data atravï¿½s do Calendar
 	          Calendar data = Calendar.getInstance();
 	          data.setTime(rs.getDate("dataNascimento"));
 	          contato.setDataNascimento(data);
-		      // adicionando o objeto à lista
+		      // adicionando o objeto ï¿½ lista
 	          contatos.add(contato);
 	        }
 	       rs.close();
@@ -81,7 +84,7 @@ public class ContatoDao {
 			    contato.setNome(rs.getString("nome"));
 			    contato.setEmail(rs.getString("email"));
 			    contato.setEndereco(rs.getString("endereco"));
-	            // montando a data através do Calendar
+	            // montando a data atravï¿½s do Calendar
 	            Calendar data = Calendar.getInstance();
 	            data.setTime(rs.getDate("dataNascimento"));
 	            contato.setDataNascimento(data);

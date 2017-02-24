@@ -1,5 +1,6 @@
 package br.com.caelum.mvc;
 
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -17,9 +18,12 @@ public class AlteraContatoLogica implements logica {
 	public String executa(HttpServletRequest req, HttpServletResponse res)throws Exception {
 		long id = Long.parseLong(req.getParameter("id"));
 		String sData;
+		Connection connection = null;
+		connection = (Connection) req.getAttribute("conexao");
 		Contato contato = new Contato();
 		contato.setId(id);
 		ContatoDao dao = new ContatoDao();
+		dao.setConnection(connection);
 		dao.seleciona(contato);			
 		SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
 		sData = date.format(contato.getDataNascimento().getTime()).toString();

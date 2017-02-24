@@ -2,6 +2,7 @@ package br.com.caelum.agenda.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import antlr.Parser;
 import br.com.caelum.jdbc.dao.ContatoDao;
 import br.com.caelum.modelo.Contato;
 
@@ -53,9 +53,11 @@ public class AlteraContatoServlet extends HttpServlet {
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
 		contato.setId(Long.parseLong(idContato));
-		
+		Connection connection = null;
+		connection = (Connection) request.getAttribute("conexao");
 		// salva o contato
 		ContatoDao dao = new ContatoDao();
+		dao.setConnection(connection);
 		dao.altera(contato);
 		// imprime o nome do contato que foi adicionado
 		/*out.println("<html>");
